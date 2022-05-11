@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features/cortoPlazo/nominaciones.feature",
         glue = "starter",
-        tags = "@consultaNominacion"
+        tags = "@editarNominacion"
 )
 
 public class Nominaciones {

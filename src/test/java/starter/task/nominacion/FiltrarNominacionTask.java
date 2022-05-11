@@ -30,14 +30,14 @@ public class FiltrarNominacionTask implements Task {
         actor.attemptsTo(
                 WaitUntil.the(LocatorsNominaciones.selectSistema, isVisible()).forNoMoreThan(10).seconds(),
                 Click.on(LocatorsNominaciones.selectSistema),
-                WaitUntil.the(LocatorsNominaciones.optionSistema.of(sistema), isVisible()).forNoMoreThan(10).seconds(),
-                Click.on(LocatorsNominaciones.optionSistema.of(sistema)),
+                WaitUntil.the(LocatorsNominaciones.optionSelect.of(sistema), isVisible()).forNoMoreThan(10).seconds(),
+                Click.on(LocatorsNominaciones.optionSelect.of(sistema)),
                 Click.on(LocatorsNominaciones.selectEstado),
-                WaitUntil.the(LocatorsNominaciones.optionEstado.of(estado), isVisible()).forNoMoreThan(10).seconds(),
-                Click.on(LocatorsNominaciones.optionEstado.of(estado)),
+                WaitUntil.the(LocatorsNominaciones.optionSelect.of(estado), isVisible()).forNoMoreThan(10).seconds(),
+                Click.on(LocatorsNominaciones.optionSelect.of(estado)),
                 Click.on(LocatorsNominaciones.selectTipoBusqueda),
-                WaitUntil.the(LocatorsNominaciones.optionTipo.of(tipoBusqueda), isVisible()).forNoMoreThan(10).seconds(),
-                Click.on(LocatorsNominaciones.optionTipo.of(tipoBusqueda)),
+                WaitUntil.the(LocatorsNominaciones.optionSelect.of(tipoBusqueda), isVisible()).forNoMoreThan(10).seconds(),
+                Click.on(LocatorsNominaciones.optionSelect.of(tipoBusqueda)),
                 Click.on(LocatorsNominaciones.btnBuscar)
         );
         System.out.println("end test");

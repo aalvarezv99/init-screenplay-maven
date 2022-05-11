@@ -1,10 +1,12 @@
 package starter.stepdefinitions.nominacion;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
-import starter.task.nominacion.CargarDocumentoNominaciones;
-import starter.task.nominacion.ExportarNominacionTask;
-import starter.task.nominacion.FiltrarNominacionTask;
+import starter.task.nominacion.*;
+
+import java.util.List;
+import java.util.Map;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
@@ -28,6 +30,21 @@ public class NominacionStepDefinitios {
     public void SeDaClickAlCheckParaExportar() {
         theActorInTheSpotlight().attemptsTo(
                 ExportarNominacionTask.whithExportarNominacion()
+        );
+    }
+
+    @Y("selecciona el (.*) cambia el estado a (.*) y lo guarda")
+    public void seleccionLaNominacionParaCambiarElEstado(String numPedido, String cambiarEstado) {
+        theActorInTheSpotlight().attemptsTo(
+                CambiarEstadoTask.whithCambiarEstado(numPedido, cambiarEstado)
+        );
+    }
+
+    @Entonces("selecciona el (.*) para editar el (.*) y las cantidades")
+    public void seleccionaElPedidoParaEditarElProductoCantidad(String pedido, String producto, DataTable dataTable) {
+        List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+        theActorInTheSpotlight().attemptsTo(
+                EditarNominacionTask.whithEditarNominacion(pedido, producto, data)
         );
     }
 }

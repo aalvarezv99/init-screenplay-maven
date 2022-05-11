@@ -5,7 +5,6 @@ import cucumber.api.java.es.Y;
 import starter.navigation.NavigateTo;
 import starter.task.common.GetFuncionalidadTask;
 import starter.task.login.LoginTask;
-import starter.utils.UserCredentials;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -19,16 +18,11 @@ public class CommonStepDefinitions {
         theActorCalled(userType);
     }
 
-    @Y("se crean localmente los usuarios del sistema")
-    public void seCreanLocalmenteLosUsuarios() {
-        UserCredentials.insertUsers();
-    }
-
-    @Y("^se digitan las credenciales del usuario requerido (.*)")
-    public void seDigitanLasCredenciales(String userName) {
+    @Y("^se digitan las credenciales del usuario (.*) y contrasena (.*) requeridos")
+    public void seDigitanLasCredenciales(String user, String password) {
         theActorInTheSpotlight().attemptsTo(
                 NavigateTo.theCenitGoHomePage(),
-                LoginTask.whithCredential(typeUser, userName)
+                LoginTask.whithCredential(user, password)
         );
     }
 
