@@ -24,4 +24,5 @@ public class LocatorsNominaciones {
     public static final Target selectProducto = Target.the("Elemento select para seleccionar el producto cuando se edita la nominacion").located(By.id("select2-ProductCtrl-container"));
     public static final Target solicitadoInputs = Target.the("todos los inputs para el solicitado de la tabla salida de envios").locatedBy("//tr[starts-with(@id, 'delRowCtrl') and not(contains(@style, 'none'))]//child::input[@id = 'DeliveryVolumeCtrl' and starts-with(@name, 'volume')]");
     public static final Target btnGuardarEdicionNominacion = Target.the("boton para guardar los cambios de edicion de la nominacion").locatedBy("//*[@id = 'BtnSubmitCtrl' and not(contains(@disabled, 'disabled'))]");
+    public static final Target estadoNominacion = Target.the("Estado actual de la nominacion a editar").locatedBy("//th[starts-with(text(), 'Est')]//following-sibling::td");
 }

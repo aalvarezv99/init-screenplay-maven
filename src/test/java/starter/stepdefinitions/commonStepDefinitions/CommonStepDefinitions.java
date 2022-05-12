@@ -2,6 +2,7 @@ package starter.stepdefinitions.commonStepDefinitions;
 
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Y;
+import starter.conf.RememberVariables;
 import starter.navigation.NavigateTo;
 import starter.task.common.GetFuncionalidadTask;
 import starter.task.login.LoginTask;
@@ -10,12 +11,11 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class CommonStepDefinitions {
-    String typeUser = "";
 
     @Cuando("^se asigna el (.*)")
     public void se_asigna_el(String userType) {
-        typeUser = userType;
         theActorCalled(userType);
+        theActorInTheSpotlight().remember(RememberVariables.typeUser.toString(), userType);
     }
 
     @Y("^se digitan las credenciales del usuario (.*) y contrasena (.*) requeridos")

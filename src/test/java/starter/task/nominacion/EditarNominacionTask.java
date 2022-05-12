@@ -8,8 +8,11 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.DoubleClick;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.conditions.Check;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.Visibility;
 import net.serenitybdd.screenplay.waits.WaitUntil;
+import starter.conf.RememberVariables;
 import starter.ui.nominaciones.LocatorsNominaciones;
 
 import java.util.List;
@@ -35,10 +38,17 @@ public class EditarNominacionTask implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
+        String typeUser = actor.recall(RememberVariables.typeUser.toString());
         actor.attemptsTo(
                 WaitUntil.the(LocatorsNominaciones.enlaceNominacion.of(pedido), isVisible()).forNoMoreThan(10).seconds(),
                 Scroll.to(LocatorsNominaciones.enlaceNominacion.of(pedido)),
                 Click.on(LocatorsNominaciones.enlaceNominacion.of(pedido)),
+                Check.whether(typeUser.equals("cliente"))
+                        .andIfSo(
+                                WaitUntil.the(LocatorsNominaciones.estadoNominacion, isVisible()).forNoMoreThan(10).seconds(),
+                                Scroll.to(LocatorsNominaciones.estadoNominacion),
+                                Ensure.that(LocatorsNominaciones.estadoNominacion).text().isEqualTo("PENDIENTE")
+                        ),
                 WaitUntil.the(LocatorsNominaciones.btnEditar, isVisible()).forNoMoreThan(10).seconds(),
                 Scroll.to(LocatorsNominaciones.btnEditar),
                 Click.on(LocatorsNominaciones.btnEditar),

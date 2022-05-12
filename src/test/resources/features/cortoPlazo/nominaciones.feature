@@ -16,7 +16,7 @@ Característica: Flujo completo de nominaciones
       | menu                    | submenu    | item                    | sistema | estado | tipoBusqueda                 |
       | Pedidos y planificación | Nominación | Nominación de Refinados | TODOS   | TODOS  | Solicitudes mes actual (n-1) |
 
-  @crearNominacionCliente
+  @cargarNominacion
   Esquema del escenario: El cliente ingresa y crea la nominacion
     Cuando el usuario ingresa al menu <menu> submenu <submenu> item <item>
     Y carga el documento de nominacion <rutaDoc> con el mensaje esperado <mensaje>
@@ -25,7 +25,7 @@ Característica: Flujo completo de nominaciones
       | rutaDoc                                                  | mensaje        | menu                    | submenu    | item                          |
       | src/test/resources/data/nominaciones/cliente/PRIMAX.xlsx | Cargue exitoso | Pedidos y planificación | Nominación | Cargue Masivo de Nominaciones |
 
-  @cargarAsignacionPlaneador
+  @cargarAsignacion
   Esquema del escenario: El planeador ingresa y carga la asignacion
     Cuando el usuario ingresa al menu <menu> submenu <submenu> item <item>
     Y carga el documento de nominacion <rutaDoc> con el mensaje esperado <mensaje>
@@ -50,8 +50,9 @@ Característica: Flujo completo de nominaciones
     Y se selecciona <sistema> y <estado> para filtrar <tipoBusqueda>
     Entonces selecciona el <pedido> para editar el <producto> y las cantidades
       | solicitado |
-      | 3397,00    |
+      | 3009,00    |
 
     Ejemplos:
-      | menu                    | submenu    | item                    | sistema | estado | tipoBusqueda                  | pedido               | producto                       |
-      | Pedidos y planificación | Nominación | Nominación de Refinados | TODOS   | TODOS  | Solicitudes mes a nominar (n) | 10110093060910280622 | GLP - GAS LICUADO DEL PETROLEO |
+      | menu                    | submenu    | item                    | sistema | estado | tipoBusqueda                 | pedido               | producto                       |
+      | Pedidos y planificación | Nominación | Nominación de Refinados | TODOS   | TODOS  | Solicitudes mes actual (n-1) | 10110103060910280522 | GLP - GAS LICUADO DEL PETROLEO |
+#      | Pedidos y planificación | Nominación | Nominación de Refinados | TODOS   | TODOS  | Solicitudes mes a nominar (n) | 10110103060910280522 | GLP - GAS LICUADO DEL PETROLEO |

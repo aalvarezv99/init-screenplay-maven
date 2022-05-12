@@ -1,8 +1,8 @@
 package starter.conf;
 
-import cucumber.api.java.Before;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import cucumber.api.java.Before;
 
 public class SetTheStage {
 
